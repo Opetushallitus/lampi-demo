@@ -20,7 +20,7 @@ services:
     ports:
       - "127.0.0.1:4566:4566"
     volumes:
-      - ./local-dev/s3-init:/etc/localstack/init/ready.d
+      - ./localstack/init/ready.d:/etc/localstack/init/ready.d
     environment:
       - GATEWAY_LISTEN=0.0.0.0:4566
       - SERVICES=s3
