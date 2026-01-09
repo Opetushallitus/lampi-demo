@@ -1,0 +1,16 @@
+{
+  "name": "lampi-demo",
+  "version": "1.0.0",
+  "description": "Show how easy it is to restore Lampi data dump to a PostgreSQL database",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npx tsx index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
+  }
+}
