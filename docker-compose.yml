@@ -1,0 +1,32 @@
+services:
+  database:
+    image: postgres:18.1
+    container_name: db
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lampi pgadmin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_USER: "pgadmin"
+      POSTGRES_PASSWORD: "pgpassword"
+      POSTGRES_DB: "lampi"
+
+  s3:
+    image: localstack/localstack:4.12
+    container_name: s3-local
+    ports:
+      - "127.0.0.1:4566:4566"
+    volumes:
+      - ./local-dev/s3-init:/etc/localstack/init/ready.d
+    environment:
+      - GATEWAY_LISTEN=0.0.0.0:4566
+      - SERVICES=s3
+      - DEBUG=1
+    healthcheck:
+      test: ["CMD-SHELL", "curl", "-f", "http://localhost:4566"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
