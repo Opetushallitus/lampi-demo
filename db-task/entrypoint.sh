@@ -3,7 +3,7 @@ set -o errexit -o nounset -o pipefail
 
 function main() {
   echo "Task is starting"
-  npx tsx /app/index.ts
+  npx tsx /app/src/index.ts
 }
 
 main "$@"

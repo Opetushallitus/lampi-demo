@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    entrypoint: /app/entrypoint.sh
 
   database:
     image: postgres:18.1

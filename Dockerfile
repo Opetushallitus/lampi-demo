@@ -4,5 +4,7 @@ RUN apk add postgresql17-client bash file gzip curl
 
 WORKDIR /app
 
-COPY src /app
+COPY db-task /app
 RUN npm ci
+
+ENTRYPOINT ["/app/entrypoint.sh"]
