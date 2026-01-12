@@ -1,4 +1,11 @@
 services:
+
+  db-task:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: /app/entrypoint.sh
+
   database:
     image: postgres:18.1
     container_name: db
