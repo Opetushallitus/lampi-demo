@@ -23,7 +23,6 @@
 				"noUnusedVariables": "error"
 			},
 			"style": {
-				"noVar": "error",
 				"useConst": "error"
 			}
 		}
@@ -31,6 +30,7 @@
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
+			"semicolons": "asNeeded",
 			"trailingCommas": "all"
 		}
 	},
