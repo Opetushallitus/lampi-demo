@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^25.0.6",
     "typescript": "^5.9.3"
   },
   "dependencies": {

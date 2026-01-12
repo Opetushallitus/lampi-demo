@@ -4,6 +4,12 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    environment:
+      PG_HOST: "database"
+      PG_PORT: "5432"
+      DB_NAME: "lampi"
+      POSTGRES_USER: "pgadmin"
+      POSTGRES_PASSWORD: "pgpassword"
 
   database:
     image: postgres:18.1
