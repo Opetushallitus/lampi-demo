@@ -7,6 +7,9 @@ export function getConfig() {
 			user: requireEnv('POSTGRES_USER'),
 			password: requireEnv('POSTGRES_PASSWORD'),
 		},
+		s3: {
+			endpoint: requireEnv('S3_ENDPOINT'),
+		},
 	}
 }
 
