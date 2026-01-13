@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     environment:
-      PG_HOST: "database"
+      PG_HOST: "db"
       PG_PORT: "5432"
       DB_NAME: "lampi"
       POSTGRES_USER: "pgadmin"
