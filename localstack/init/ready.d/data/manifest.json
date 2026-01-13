@@ -1,1 +1,13 @@
-{"tables":[{"key":"koodisto/v1/koodi.csv","s3Version":"bdM9U.rIJp4AtReuYxYOSW1D7OHV2TJY"},{"key":"koodisto/v1/relaatio.csv","s3Version":"vfEqsXRk3lloTsbCrzpAezCI2Oo3Z2oy"}],"schema":{"key":"koodisto/v1/koodisto.schema","s3Version":"Qxdcp1qHpVbeKyMMzAdppDs2_jgxp_N2"}}
+{
+  "tables": [
+    {
+      "key": "koodi.csv"
+    },
+    {
+      "key": "relaatio.csv"
+    }
+  ],
+  "schema": {
+    "key": "koodisto.schema"
+  }
+}

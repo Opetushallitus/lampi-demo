@@ -2,8 +2,6 @@
 -- PostgreSQL database dump
 --
 
-\restrict tztzx4OwhcCgGRw9VhGUIdD6jtXa1MmN51ZJ2RtYQlnKVNiOlhSEiUHptfwn6tS
-
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.7
 
@@ -83,6 +81,4 @@ ALTER TABLE ONLY koodisto.relaatio
 --
 -- PostgreSQL database dump complete
 --
-
-\unrestrict tztzx4OwhcCgGRw9VhGUIdD6jtXa1MmN51ZJ2RtYQlnKVNiOlhSEiUHptfwn6tS
 
