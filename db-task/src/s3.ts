@@ -1,5 +1,5 @@
-import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import type { NodeJsClient } from '@smithy/types'
+import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 
 const AWS_REGION = 'us-east-1'
 const s3 = new S3Client({
@@ -13,11 +13,16 @@ const s3 = new S3Client({
 	},
 }) as NodeJsClient<S3Client>
 
-export async function getObjectBody(
-	Bucket: string,
-	Key: string,
-	VersionId?: string,
-) {
+type S3File = {
+	key: string
+}
+
+export type ManifestFile = {
+	tables: S3File[]
+	schema: S3File
+}
+
+export async function getObjectBody(Bucket: string, Key: string, VersionId?: string) {
 	const commandParams = {
 		Bucket,
 		Key,
