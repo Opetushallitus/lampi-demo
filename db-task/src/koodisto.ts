@@ -20,7 +20,7 @@ export async function restoreKoodistoDataFromS3toDB() {
 async function createDatabaseWithSchema(db: Client, schema: string) {
 	console.info('Creating database koodisto')
 
-	await db.query(`DROP SCHEMA IF EXISTS koodisto;`)
+	await db.query(`DROP SCHEMA IF EXISTS koodisto CASCADE;`)
 	await db.query(`CREATE SCHEMA koodisto;`)
 	await db.query(schema)
 
