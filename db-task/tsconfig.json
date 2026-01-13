@@ -1,7 +1,7 @@
 {
-  "extends": "@tsconfig/strictest/tsconfig.json",
-  "compilerOptions": {
-    "module": "nodenext",
-    "outDir": "dist"
-  }
+	"extends": "@tsconfig/strictest/tsconfig.json",
+	"compilerOptions": {
+		"module": "nodenext",
+		"outDir": "dist"
+	}
 }
