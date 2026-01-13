@@ -17,11 +17,13 @@
 		"@tsconfig/strictest": "^2.0.8",
 		"@types/node": "^25.0.6",
 		"@types/pg": "^8.16.0",
+		"@types/pg-copy-streams": "^1.2.5",
 		"typescript": "^5.9.3"
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.966.0",
 		"pg": "^8.16.3",
+		"pg-copy-streams": "^7.0.0",
 		"tsx": "^4.21.0",
 		"zx": "^8.8.5"
 	}
