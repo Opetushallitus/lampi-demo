@@ -7,6 +7,7 @@ function psql() {
 
   docker compose -f ./docker-compose.yml run \
     -e PGPASSWORD="pgpassword" \
+    -e PAGER="less -S" \
      database \
      /usr/bin/psql --host=db --port 5432 --dbname lampi --username pgadmin
 
