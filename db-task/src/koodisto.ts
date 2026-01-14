@@ -15,6 +15,7 @@ export async function restoreKoodistoDataFromS3toDB() {
 	await withDatabaseTransaction(async (db) => {
 		await createDatabaseWithSchema(db, schema)
 		await Promise.all(manifest.tables.map((table) => importTableToDatabase(db, table.key)))
+		await markTaskAsCompleted(db)
 	})
 }
 
@@ -38,6 +39,13 @@ async function importTableToDatabase(db: Client, s3Key: string) {
 	await pipeline(tableDataAsCsvStream.Body, copyStream)
 
 	console.info(`Successfully imported data for table "${tableName}"`)
+}
+
+async function markTaskAsCompleted(db: Client) {
+	await db.query(`CREATE TABLE IF NOT EXISTS task_status (task_name text, status text);`)
+	await db.query(`INSERT INTO task_status (task_name, status) VALUES ('koodisto', 'completed');`)
+
+	console.info(`Marked "koodisto" task status as "completed"`)
 }
 
 async function getManifestFile(): Promise<ManifestFile> {

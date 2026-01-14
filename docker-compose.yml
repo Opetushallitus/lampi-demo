@@ -1,6 +1,7 @@
 services:
 
   db-task:
+    image: lampi-db-task
     build:
       context: .
       dockerfile: ./Dockerfile

@@ -10,7 +10,7 @@ function stop() {
 
 function main() {
   pushd "${CURRENT_DIR}"
-  docker compose -f ./docker-compose.yml up
+  docker compose -f ./docker-compose.yml up --build
   popd
 }
 
