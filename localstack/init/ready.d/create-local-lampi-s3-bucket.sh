@@ -13,6 +13,10 @@ function copy_files_to_bucket() {
   awslocal s3 cp "${CURRENT_DIR}"/data/relaatio.csv s3://oph-lampi-local/relaatio.csv
 }
 
+function create_healthcheck() {
+  echo "ok" | awslocal s3 cp - s3://oph-lampi-local/healthcheck.txt
+}
+
 function list_files() {
   aws --endpoint-url=http://127.0.0.1:4566 s3 ls --recursive s3://oph-lampi-local/
 }
@@ -20,6 +24,7 @@ function list_files() {
 function main() {
   create_bucket
   copy_files_to_bucket
+  create_healthcheck
 }
 
 main
