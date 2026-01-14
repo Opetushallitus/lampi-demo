@@ -14,4 +14,5 @@ function main() {
   popd
 }
 
+trap stop EXIT
 main "$@"
