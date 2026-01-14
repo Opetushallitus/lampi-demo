@@ -117,12 +117,8 @@ S3 Bucket (LocalStack)          Node.js Application              PostgreSQL
    ./start-local-env.sh
    ```
 
-   This starts the database and LocalStack S3 services. Press `Ctrl+C` to stop when done.
+   This starts the database, LocalStack S3 services and runs the import task. Press `Ctrl+C` to stop when done.
 
-2. **Run the import task** (in a separate terminal):
-   ```bash
-   ./run-task.sh
-   ```
 
 3. **Connect to the database** to verify the import:
    ```bash
