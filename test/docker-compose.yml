@@ -17,3 +17,5 @@ services:
       POSTGRES_USER: "pgadmin"
       POSTGRES_PASSWORD: "pgpassword"
       S3_ENDPOINT: "not used in tests"
+    volumes:
+      - ${TEST_RESULTS_DIR:-./test-results}:/app/test-results

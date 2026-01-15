@@ -10,8 +10,9 @@ function ensure_service_is_down() {
 
 function run_tests() {
   pushd "${CURRENT_DIR}"
-  docker compose -f ./docker-compose.yml run --build --rm test
-  local exit_code=$?
+
+  local exit_code=0
+  docker compose -f ./docker-compose.yml run --build --rm test || exit_code=$?
   docker compose -f ./docker-compose.yml down
   popd
 
