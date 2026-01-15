@@ -42,14 +42,12 @@ The project consists of three main components running in Docker:
 ```
 S3 Bucket (LocalStack)          Node.js Application              PostgreSQL
 ┌─────────────────┐             ┌──────────────────┐            ┌──────────┐
-│ manifest.json   │────────────▶│ Read manifest    │            │          │
-│ koodisto.schema │────────────▶│ Create schema    │───────────▶│ Database │
-│ koodi.csv       │─────────┐   │                  │            │          │
-│ relaatio.csv    │─────────┼──▶│ Stream CSV data  │───COPY────▶│          │
-└─────────────────┘         │   └──────────────────┘            └──────────┘
-                            │            ▲
-                            └────────────┘
-                          (Streaming pipeline)
+│ manifest.json   │             │ Read manifest    │            │          │
+│ koodisto.schema │───READ────▶ │ Create schema    │            │ Database │
+│ koodi.csv       │             │ Stream CSV data  │            │          │
+│ relaatio.csv    │             │                  │───COPY────▶│          │
+└─────────────────┘             └──────────────────┘            └──────────┘
+
 ```
 
 ### Import Process
@@ -81,7 +79,6 @@ S3 Bucket (LocalStack)          Node.js Application              PostgreSQL
 ├── docker-compose.yml              # Multi-container setup
 ├── Dockerfile                      # Node.js application container
 ├── start-local-env.sh              # Helper: Start local environment
-├── run-task.sh                     # Helper: Run import task
 ├── psql-to-local-db.sh             # Helper: Connect to database
 ├── db-task/                        # TypeScript application
 │   ├── src/
@@ -117,10 +114,10 @@ S3 Bucket (LocalStack)          Node.js Application              PostgreSQL
    ./start-local-env.sh
    ```
 
-   This starts the database, LocalStack S3 services and runs the import task. Press `Ctrl+C` to stop when done.
+   This starts the database, LocalStack S3 services and runs the import task.
 
 
-3. **Connect to the database** to verify the import:
+2. **Connect to the database** to verify the import:
    ```bash
    ./psql-to-local-db.sh
    ```
@@ -133,34 +130,20 @@ S3 Bucket (LocalStack)          Node.js Application              PostgreSQL
    \q
    ```
 
-### Alternative: Using Docker Compose Directly
-
-If you prefer to use Docker Compose commands directly:
-
-1. **Start all services and run import**:
-   ```bash
-   docker-compose up --build
-   ```
-
-2. **Verify the data**:
-   ```bash
-   docker exec -it db psql -U pgadmin -d lampi -c "SELECT count(*) FROM koodisto.koodi;"
-   ```
-
-3. **Clean up**:
-   ```bash
-   docker-compose down
-   ```
+3. **Stopping** 
+    ```bash
+      Press `Ctrl+C` to stop when done.
+    ```
 
 ## Helper Scripts
 
 The repository includes convenience scripts to simplify common operations:
 
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| `start-local-env.sh` | Starts PostgreSQL and S3 services | Run first to start infrastructure |
-| `run-task.sh` | Builds and runs the import task | Run after services are up |
-| `psql-to-local-db.sh` | Opens psql connection to the database | Interactive database access |
+| Script                | Purpose                               | Usage                             |
+|-----------------------|---------------------------------------|-----------------------------------|
+| `start-local-env.sh`  | Starts PostgreSQL and S3 services     | Run first to start infrastructure |
+| `psql-to-local-db.sh` | Opens psql connection to the database | Interactive database access       |
+| `test/run-tests.sh`   | Test the service                      | Github Actions CI pipeline        |
 
 ## Technical Implementation Details
 
@@ -260,4 +243,4 @@ To adapt this for production use:
 
 ## License
 
-ISC
+EUPL
