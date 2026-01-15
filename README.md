@@ -6,6 +6,42 @@ A demonstration project showing how to efficiently restore OPH (Opetushallitus /
 
 This repository demonstrates a production-ready approach for importing large datasets (database schema + CSV data) from S3-compatible storage into PostgreSQL. The implementation uses streaming to handle large CSV files efficiently without loading them entirely into memory.
 
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+
+## Running the Demo
+
+### Quick Start
+
+1. **Start the local environment** (PostgreSQL + S3):
+   ```bash
+   ./start-local-env.sh
+   ```
+
+   This starts the database, LocalStack S3 services and runs the import task.
+
+
+2. **Connect to the database** to verify the import:
+   ```bash
+   ./psql-to-local-db.sh
+   ```
+
+   Then run queries to verify the data:
+   ```sql
+   SELECT count(*) FROM koodisto.koodi;
+   SELECT count(*) FROM koodisto.relaatio;
+   \dt koodisto.*
+   \q
+   ```
+
+3. **Stopping**
+    ```bash
+      Press `Ctrl+C` to stop when done.
+    ```
+
 ### What is Koodisto?
 
 Koodisto is the Finnish National Agency for Education's code registry system that maintains various educational codes and classifications. The data consists of:
@@ -99,41 +135,6 @@ S3 Bucket (LocalStack)          Node.js Application              PostgreSQL
             ├── koodi.csv          # Code data
             └── relaatio.csv       # Relationship data
 ```
-
-## Prerequisites
-
-- Docker
-- Docker Compose
-
-## Running the Demo
-
-### Quick Start
-
-1. **Start the local environment** (PostgreSQL + S3):
-   ```bash
-   ./start-local-env.sh
-   ```
-
-   This starts the database, LocalStack S3 services and runs the import task.
-
-
-2. **Connect to the database** to verify the import:
-   ```bash
-   ./psql-to-local-db.sh
-   ```
-
-   Then run queries to verify the data:
-   ```sql
-   SELECT count(*) FROM koodisto.koodi;
-   SELECT count(*) FROM koodisto.relaatio;
-   \dt koodisto.*
-   \q
-   ```
-
-3. **Stopping** 
-    ```bash
-      Press `Ctrl+C` to stop when done.
-    ```
 
 ## Helper Scripts
 
