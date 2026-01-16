@@ -14,7 +14,11 @@ export async function restoreKoodistoDataFromS3toDB() {
 
 	await withDatabaseTransaction(async (db) => {
 		await createDatabaseWithSchema(db, schema)
-		await Promise.all(manifest.tables.map((table) => importTableToDatabase(db, table.key)))
+
+		for (const table of manifest.tables) {
+			await importTableToDatabase(db, table.key)
+		}
+
 		await markTaskAsCompleted(db)
 	})
 }
