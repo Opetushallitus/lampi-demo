@@ -24,14 +24,16 @@ jobs:
         run: ./test/run-tests.sh
 
       - name: Publish Test Results
+        id: publish
         uses: dorny/test-reporter@v2
         if: always()
+        continue-on-error: true
         with:
           name: Test Results
           path: test-results/junit.xml
           reporter: java-junit
           fail-on-error: true
 
-      - name: Fail if tests failed
-        if: steps.tests.outcome == 'failure'
+      - name: Fail if tests failed or publish failed
+        if: steps.tests.outcome == 'failure' || steps.publish.outcome == 'failure'
         run: exit 1
