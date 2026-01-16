@@ -8,4 +8,5 @@
 /dataSources.local.xml
 lampi-demo.iml
 node_modules/
-test-results/
+test/test-results
+.DS_Store
