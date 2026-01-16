@@ -1,5 +1,6 @@
 FROM node:24-alpine3.22
 
+RUN apk add bash
 WORKDIR /app
 
 COPY db-task /app
