@@ -34,7 +34,7 @@ services:
       POSTGRES_DB: "lampi"
 
   s3:
-    image: localstack/localstack:4.12
+    image: localstack/localstack:4.13
     container_name: s3-local
     ports:
       - "127.0.0.1:4566:4566"
