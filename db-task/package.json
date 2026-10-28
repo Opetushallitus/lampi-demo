@@ -14,7 +14,7 @@
 		"@biomejs/biome": "^2.3.11",
 		"@smithy/types": "^4.11.0",
 		"@tsconfig/strictest": "^2.0.8",
-		"@types/node": "^25.0.6",
+		"@types/node": "^26.0.0",
 		"@types/pg": "^8.16.0",
 		"@types/pg-copy-streams": "^1.2.5",
 		"typescript": "^7.0.0"
